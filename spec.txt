@@ -1,0 +1,50 @@
+four registers, $s0, $s1, $s2 and $s3 all of which are 8 bits (1 btye)
+
+Instruction | Opcode (in binary)    | Function Code (in binary) | Type
+    add         00                      00                          R-type
+    sub         00                      01                          R-type
+    sll         00                      10                          R-type
+    and         00                      11                          R-type
+    lw          01                      N/A                         I-type
+    sw          10                      N/A                         I-type
+    addi        11                      N/A                         I-type
+
+
+add
+The add instruction interprets the values of both the registers R[rt/rd] and R[rs] as unsigned 8-bit
+integers, computes R[rs]+R[rt/rd] (their sum) and stores the result as an unsigned 8-bit integer in
+the register R[rt/rd]. Overflow is undefined behavior (don’t worry about it).
+
+sub
+The sub instruction interprets the values of both R[rt/rd] and R[rs] as unsigned 8-bit integers,
+computes R[rs]-R[rt/rd] (their difference), and stores the result as an unsigned 8-bit integer in the
+register R[rt/rd]. Underflow is undefined behavior (don’t worry about it).
+
+sll
+The sll instruction interprets the values of both R[rt/rd] and R[rs] as unsigned 8-bit integers and
+shifts the bits in R[rt/rd] by R[rs] bits with zeros inserted on right to replace the shifted bits. The
+leftmost shifted bits are discarded. The result is stored in the register R[rt/rd].
+Example:
+If R[rt/rd]=0b01011010 and R[rs]=4, then executing sll would result in: R[res]=0b10100000.
+
+and
+The and instruction takes the values of R[rt/rd] and R[rs], performs bitwise-and, and stores the
+result as an unsigned 8-bit integer in the register R[rt/rd].
+Example:
+If R[rt/rd]=0b00001010 and R[rs]=0b00001100, then executing and would result in:
+R[res]=0b00001000.
+
+addi
+The addi instruction interprets the value of R[rs] as an 8-bit unsigned integer and the value of
+immediate as a 2-bit unsigned integer, computes their sum, and stores the sum as an unsigned 8-
+bit integer in the register R[rt/rd].
+
+sw
+The sw instruction retrieves the value of R[rs] as an unsigned 8-bit integer and the value
+immediate as an unsigned 2-bit integer, and then stores the value in R[rt/rd] at the memory
+address R[rs]+immediate.
+
+lw
+The lw instruction retrieves the value of R[rs] as an unsigned 8-bit integer and the value
+immediate as an unsigned 2-bit integer and then loads a word from memory at the address
+R[rs]+immediate and stores it in the register R[rt/rd].
