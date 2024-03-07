@@ -10,6 +10,14 @@ Instruction | Opcode (in binary)    | Function Code (in binary) | Type
     addi        11                      N/A                         I-type
 
 
+R-type instruction:
+opcode  | rt/rd     | rs |  function code
+7 6         5 4       3 2  1 0
+
+I-type instruction:
+opcode  | rt/rd     | rs    | immediate
+7 6         5 4      3 2        1 0
+
 add
 The add instruction interprets the values of both the registers R[rt/rd] and R[rs] as unsigned 8-bit
 integers, computes R[rs]+R[rt/rd] (their sum) and stores the result as an unsigned 8-bit integer in
