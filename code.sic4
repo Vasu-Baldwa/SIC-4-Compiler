@@ -1,3 +1,7 @@
-add %s0, %s0, %s1
-sub %s0, %s1, %s2
-and %s1, %s3, %s3
+add %s0, %s0
+sub %s0, %s1
+and %s1, %s3
+lw %s2, %s1, 3
+hjd
+addi s0
+sll t5
