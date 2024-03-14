@@ -1,1 +1,9 @@
 Add proccessing for virtual registers?
+Make a `.mem` file.
+    Initialize with 0
+    Load in defined words
+
+Add directives like `.word`, and `.byte`
+    Add .ptr to point to other words.
+
+Make assembler handle incomplete lines, or cases where it couldn't proccess such as lines 6,7 of code.sic4
